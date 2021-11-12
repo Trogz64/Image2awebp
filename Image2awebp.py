@@ -9,6 +9,7 @@ parser.add_argument("-O", "--output", help="Set output directory (Default = .\\O
 parser.add_argument("-D", "--duration", help="Set duration of frames in milliseconds (Default = 200ms)", default=200, type=int)
 parser.add_argument("-C", "--crop", help="Set crop factor of each frame (Default = 100 = no crop)", default=100, type=int)
 parser.add_argument("-G", "--gif", help="Save the animation as a .gif file instead of .webp", action="store_true")
+parser.add_argument("-B", "--boomerang", help="Use 'boomerang' style looping", action="store_true")
 
 args = parser.parse_args()
 
@@ -16,6 +17,15 @@ print(("Using input file: %s") % (args.input))
 print(("Output directory: %s") % (args.output))
 print(("Using frame duration: %sms") % (args.duration))
 print(("Using crop factor: %s%%") % (args.crop))
+if args.gif:
+    print("Saving as .gif")
+else:
+    print("Saving as .webp")
+
+if args.boomerang:
+    print("Using 'boomerang' style looping")
+else:
+    print("Using traditional style looping")
 
 # Load input image
 try:
@@ -51,7 +61,11 @@ frame4 = fullImg.crop((0, (fullImg.size[1]/2), (fullImg.size[0]/2), fullImg.size
 
 # generate and save awebp/gif to file
 
-sequence = [frame1, frame2, frame3, frame4]
+if args.boomerang:
+    sequence = [frame1, frame2, frame3, frame4, frame3, frame2]
+else:
+    sequence = [frame1, frame2, frame3, frame4]
+    
 if args.gif:
     sequence[0].save((args.output + "\\" + ntpath.basename(args.input.split(".")[0]) + "_Animation.gif"), save_all = True, append_images = sequence[1:], duration = args.duration, loop = 0)
     print("File saved to " + args.output + "\\" + ntpath.basename(args.input.split(".")[0]) + "_Animation.gif")

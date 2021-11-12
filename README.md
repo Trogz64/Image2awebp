@@ -31,7 +31,7 @@ The program uses the [Pillow](https://pillow.readthedocs.io/en/stable/installati
 ## Usage
 
 ```txt
-Image2awebp.py [-h] -I INPUT [-O OUTPUT] [-D DURATION] [-C CROP]
+Image2awebp.py [-h] -I INPUT [-O OUTPUT] [-D DURATION] [-C CROP] [-G] [-B]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -48,6 +48,8 @@ optional arguments:
   -C CROP, --crop CROP  Set crop factor of each frame (Default = 100 = no crop)
 
   -G, --gif             Save the animation as a .gif file instead of .webp
+
+  -B, --boomerang       Use 'boomerang' style looping
 ```
 
 ### Examples
@@ -55,25 +57,25 @@ optional arguments:
 - Provide an input image and leave all the other settings as the default
 
 ```sh
-Image2awebp.py --input "inputImage.jpg"
+python Image2awebp.py --input "inputImage.jpg"
 ```
 
 - Provide an input image, set the duration of each frame to 100ms and set the crop factor to 90%
 
 ```sh
-Image2awebp.py -I "inputImage.jpg" -D 100 -C 90
+python Image2awebp.py -I "inputImage.jpg" -D 100 -C 90
 ```
 
 - Provide an input image, set the output directory, and leave the other settings as default
 
 ```sh
-Image2awebp.py -I "inputImage.png" --output "C:\Users\outputDir"
+python Image2awebp.py -I "inputImage.png" --output "C:\Users\outputDir"
 ```
 
 - Provide an input image, set the duration of each frame to 250ms, and save the animation as a .gif
 
 ```sh
-Image2awebp.py -I "InputImage.tiff" -G --duration 250
+python Image2awebp.py -I "InputImage.tiff" -G --duration 250
 ```
 
 ---
