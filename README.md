@@ -16,7 +16,7 @@ Frames are in the order:
 
 ## Usage
 
-```
+```txt
 Image2awebp.py [-h] -I INPUT [-O OUTPUT] [-D DURATION] [-C CROP]
 
 optional arguments:
@@ -58,4 +58,4 @@ Image2awebp.py -I "inputImage.jpg" --output "C:\Users\outputDir"
 
 ## Dependencies
 
-* Requires [Python](https://www.python.org/) version 3.5.3 or higher
+- Requires [Python](https://www.python.org/) version 3.5.3 or higher
