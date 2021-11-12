@@ -58,7 +58,7 @@ optional arguments:
 Image2awebp.py --input "inputImage.jpg"
 ```
 
-- Provide an input image, set the duration of each fram to 100ms and set the crop factor to 90%
+- Provide an input image, set the duration of each frame to 100ms and set the crop factor to 90%
 
 ```sh
 Image2awebp.py -I "inputImage.jpg" -D 100 -C 90
@@ -67,7 +67,13 @@ Image2awebp.py -I "inputImage.jpg" -D 100 -C 90
 - Provide an input image, set the output directory, and leave the other settings as default
 
 ```sh
-Image2awebp.py -I "inputImage.jpg" --output "C:\Users\outputDir"
+Image2awebp.py -I "inputImage.png" --output "C:\Users\outputDir"
+```
+
+- Provide an input image, set the duration of each frame to 250ms, and save the animation as a .gif
+
+```sh
+Image2awebp.py -I "InputImage.tiff" -G --duration 250
 ```
 
 ---
