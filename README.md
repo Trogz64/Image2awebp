@@ -23,7 +23,7 @@ optional arguments:
   -h, --help            show this help message and exit
   
   -I INPUT, --input INPUT
-                        Set input filepath
+                        Set input filepath. Supports .png and .jpg/.jpeg
   
   -O OUTPUT, --output OUTPUT
                         Set output directory
