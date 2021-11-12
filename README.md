@@ -21,17 +21,17 @@ Image2awebp.py [-h] -I INPUT [-O OUTPUT] [-D DURATION] [-C CROP]
 
 optional arguments:
   -h, --help            show this help message and exit
-  
+
   -I INPUT, --input INPUT
                         Set input filepath. Supports .png and .jpg/.jpeg
   
   -O OUTPUT, --output OUTPUT
-                        Set output directory
+                        Set output directory (Default = .\Output)
   
   -D DURATION, --duration DURATION
-                        Set duration of frames in milliseconds
-
-  -C CROP, --crop CROP  Set crop factor of each frame (100 == no crop)
+                        Set duration of frames in milliseconds (Default = 33ms)
+  
+  -C CROP, --crop CROP  Set crop factor of each frame (Default = 100 = no crop)
 ```
 
 ### Examples
@@ -42,10 +42,10 @@ optional arguments:
 Image2awebp.py --input "inputImage.jpg"
 ```
 
-- Provide an input image, set the duration of each fram to 3ms and set the crop factor to 90%
+- Provide an input image, set the duration of each fram to 16ms and set the crop factor to 90%
 
 ```sh
-Image2awebp.py -I "inputImage.jpg" -D 3 -C 90
+Image2awebp.py -I "inputImage.jpg" -D 16 -C 90
 ```
 
 - Provide an input image, set the output directory, and leave the other settings as default
@@ -59,3 +59,5 @@ Image2awebp.py -I "inputImage.jpg" --output "C:\Users\outputDir"
 ## Dependencies
 
 - Requires [Python](https://www.python.org/) version 3.5.3 or higher
+
+- Requires [Pillow](https://pillow.readthedocs.io/en/stable/installation.html) version 8.2.0 or higher
