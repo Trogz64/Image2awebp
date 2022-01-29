@@ -4,13 +4,13 @@ A script to turn a single image into an animated .webp (or .gif) file by splitti
 
 Frames are in the order:
 
-1. Bottom Right
+1. Top Left
 
-2. Top Right
+2. Bottom Left
 
-3. Top Left
+3. Bottom Right
 
-4. Bottom Left
+4. Top Right
 
 ---
 
@@ -85,9 +85,3 @@ python Image2awebp.py -I "InputImage.tiff" -G --duration 250
 - Requires [Python](https://www.python.org/) version 3.5.3 or higher
 
 - Requires [Pillow](https://pillow.readthedocs.io/en/stable/installation.html) version 8.2.0 or higher
-
----
-
-## TODO
-
-- Implement crop functionality
