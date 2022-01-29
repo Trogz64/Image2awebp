@@ -85,3 +85,9 @@ python Image2awebp.py -I "InputImage.tiff" -G --duration 250
 - Requires [Python](https://www.python.org/) version 3.5.3 or higher
 
 - Requires [Pillow](https://pillow.readthedocs.io/en/stable/installation.html) version 8.2.0 or higher
+
+---
+
+## TODO
+
+- Perhaps some AI image aligning
