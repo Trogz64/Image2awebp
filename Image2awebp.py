@@ -31,7 +31,7 @@ else:
 try:
     fullImg = Image.open(args.input)
 except:
-    print("Error reading input file")
+    print("ERROR - Cannot read input file")
     sys.exit(2)
 
 # Check output does not end in a slash and remove if it does
@@ -41,7 +41,11 @@ if args.output[-1] == '\\' or args.output[-1] == '/':
 
 # Check output is a directory and if not, create it
 if os.path.isfile(args.output):
-    print("Output must be a directory, not a file.")
+    print("ERROR - Output must be a directory, not a file.")
+    sys.exit(2)
+
+if args.crop < 0 or args.crop > 100:
+    print("ERROR - Crop factor must be between 0 and 100")
     sys.exit(2)
 
 if not os.path.isdir(args.output):
@@ -50,14 +54,18 @@ if not os.path.isdir(args.output):
 # Split image into four
 
 # Image.crop(x1, y1, x2, y2)
+# Image.crop(left, upper, right, lower)
 # Image.size[0] = width
 # Image.size[1] = height
-frame1 = fullImg.crop(((fullImg.size[0]/2), (fullImg.size[1]/2), fullImg.size[0], fullImg.size[1]))
-frame2 = fullImg.crop(((fullImg.size[0]/2), 0, fullImg.size[0], (fullImg.size[1]/2)))
-frame3 = fullImg.crop((0, 0, (fullImg.size[0]/2), (fullImg.size[1]/2)))
-frame4 = fullImg.crop((0, (fullImg.size[1]/2), (fullImg.size[0]/2), fullImg.size[1]))
+subImgWidth = (fullImg.size[0] / 2) * (args.crop / 100)
+subImgHeight = (fullImg.size[1] / 2) * (args.crop / 100)
+xOffset = (fullImg.size[0] - subImgWidth) / 2
+yOffset = (fullImg.size[1] - subImgHeight) / 2
 
-#TODO Implement crop functionality
+frame1 = fullImg.crop((fullImg.size[0]/2) + xOffset, (fullImg.size[1]/2) + yOffset, (fullImg.size[0]/2) + xOffset + subImgWidth, (fullImg.size[1]/2) + yOffset + subImgHeight)
+frame2 = fullImg.crop((fullImg.size[0]/2) + xOffset, yOffset, (fullImg.size[0]/2) + xOffset + subImgWidth, yOffset + subImgHeight)
+frame3 = fullImg.crop(xOffset, yOffset, xOffset + subImgWidth, yOffset + subImgHeight)
+frame4 = fullImg.crop(xOffset, (fullImg.size[1]/2) + yOffset, xOffset + subImgWidth, (fullImg.size[1]/2) + yOffset + subImgHeight)
 
 # generate and save awebp/gif to file
 
