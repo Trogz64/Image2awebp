@@ -62,9 +62,13 @@ subImgHeight = (fullImg.size[1] / 2) * (args.crop / 100)
 xOffset = ((fullImg.size[0] / 2) - subImgWidth) / 2
 yOffset = ((fullImg.size[1] / 2) - subImgHeight) / 2
 
+# Top Left
 frame1 = fullImg.crop((xOffset, yOffset, xOffset + subImgWidth, yOffset + subImgHeight))
+# Bottom Left
 frame2 = fullImg.crop((xOffset, (fullImg.size[1]/2) + yOffset, xOffset + subImgWidth, (fullImg.size[1]/2) + yOffset + subImgHeight))
+# Bottom Right
 frame3 = fullImg.crop(((fullImg.size[0]/2) + xOffset, (fullImg.size[1]/2) + yOffset, (fullImg.size[0]/2) + xOffset + subImgWidth, (fullImg.size[1]/2) + yOffset + subImgHeight))
+# Top Right
 frame4 = fullImg.crop(((fullImg.size[0]/2) + xOffset, yOffset, (fullImg.size[0]/2) + xOffset + subImgWidth, yOffset + subImgHeight))
 
 # generate and save awebp/gif to file
