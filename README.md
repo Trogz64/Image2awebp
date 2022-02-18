@@ -103,6 +103,8 @@ python Image2awebp.py -I "InputImage.tiff" -G --duration 250
     pip install vidstab[cv2]
     ```
 
+---
+
 ## TODO
 
 - Image aligning currently does not function as intended
