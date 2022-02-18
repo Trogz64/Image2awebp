@@ -30,8 +30,8 @@ else:
 # Load input image
 try:
     fullImg = Image.open(args.input)
-except:
-    print("ERROR - Cannot read input file")
+except Exception as ex:
+    print("ERROR - " + str(ex))
     sys.exit(2)
 
 # Check output does not end in a slash and remove if it does
@@ -78,9 +78,11 @@ if args.boomerang:
 else:
     sequence = [frame1, frame2, frame3, frame4]
     
+outPath = ""
 if args.gif:
-    sequence[0].save((args.output + "\\" + ntpath.basename(args.input.split(".")[0]) + "_Animation.gif"), save_all = True, append_images = sequence[1:], duration = args.duration, loop = 0)
-    print("File saved to " + args.output + "\\" + ntpath.basename(args.input.split(".")[0]) + "_Animation.gif")
+    outPath = args.output + "\\" + ntpath.basename(args.input.split(".")[0]) + "_Animation.gif"
 else:
-    sequence[0].save((args.output + "\\" + ntpath.basename(args.input.split(".")[0]) + "_Animation.webp"), save_all = True, append_images = sequence[1:], duration = args.duration)
-    print("File saved to " + args.output + "\\" + ntpath.basename(args.input.split(".")[0]) + "_Animation.webp")
+    outPath = args.output + "\\" + ntpath.basename(args.input.split(".")[0]) + "_Animation.webp"
+
+sequence[0].save(outPath, save_all = True, append_images = sequence[1:], duration = args.duration, loop = 0)
+print("File saved to " + outPath)
